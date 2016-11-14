@@ -4,4 +4,4 @@ Hi everyone,
 
 On this repo you'll find an Adruino Sonar, which use 2 Distance Sensor and 1 Servo to display a map. The range is about 150 cm.
 
-## Don't forget to install the NewPing library before uploading the sketch to your Arduino
+#### Don't forget to install the NewPing library before uploading the sketch to your Arduino
