@@ -16,6 +16,7 @@ int index1=0;
 int index2=0;
 PFont orcFont;
 Table table;
+int COM =0;
 Boolean ShowTrace=true;
 
 void MsgBox(String Msg,String Titel){
@@ -32,6 +33,7 @@ void setup() {
   while (COM == 0) {
   try {
     myPort = new Serial(this,Serial.list()[0], 115200);   // starts the serial communication
+    COM =1;
   } catch (Exception e) {
     e.printStackTrace();
     MsgBox("It looks like your Arduino is not connected to your computer !", "ERROR");
