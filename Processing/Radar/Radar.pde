@@ -14,7 +14,6 @@ float pixsDistance;
 int iAngle, iDistance;
 int index1=0;
 int index2=0;
-int COM =0;
 PFont orcFont;
 Table table;
 Boolean ShowTrace=true;
@@ -33,7 +32,6 @@ void setup() {
   while (COM == 0) {
   try {
     myPort = new Serial(this,Serial.list()[0], 115200);   // starts the serial communication
-    COM =1;
   } catch (Exception e) {
     e.printStackTrace();
     MsgBox("It looks like your Arduino is not connected to your computer !", "ERROR");
@@ -49,7 +47,7 @@ void setup() {
  table.addColumn("Y");
  
  myPort.bufferUntil('.');                            // reads the data from the serial port up to the character '.'. So actually it reads this: angle,distance.
- orcFont = loadFont("Moon-Light-50.vlw");         // set the font up
+ orcFont = loadFont("Moon-Light-50.vlw");            // set the font up
  background(149, 165, 166);                          // set the background color
 }
 
@@ -127,7 +125,6 @@ void drawLine() {
 void drawObject() {
   pushMatrix();
   translate(width/2,height-height*0.074); // moves the starting coordinats to new location
-  // red color (FLAT DESIGN)192, 57, 43
   pixsDistance = iDistance*((height-height*0.1666)*0.01885); // covers the distance from the sensor from cm to pixels
   // limiting the range to 40 cms
   if(iDistance<41 && iDistance != 0){
@@ -142,9 +139,7 @@ void drawObject() {
   //line(pixsDistance*cos(radians(iAngle))-15, -pixsDistance*sin(radians(iAngle)), pixsDistance*cos(radians(iAngle))+15, -pixsDistance*sin(radians(iAngle))); 
  //line(pixsDistance*cos(radians(iAngle)), -pixsDistance*sin(radians(iAngle))-15, pixsDistance*cos(radians(iAngle)), -pixsDistance*sin(radians(iAngle))+15);
   
-  
   StoreCoord((pixsDistance*cos(radians(iAngle))),(-pixsDistance*sin(radians(iAngle))));
-  
   }
   popMatrix();
 }
